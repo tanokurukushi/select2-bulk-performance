@@ -1,5 +1,8 @@
 # Select2大量生成パフォーマンスチェック
 
+- [ブログ記事](https://tanokurukushi.com/blog/select2-bulk-performance)
+- [デモページ](https://select2-bulk-performance.tanokurukushi.workers.dev/)
+
 ## 使用ライブラリ
 
 - jQuery (MIT License) https://jquery.com/license/
