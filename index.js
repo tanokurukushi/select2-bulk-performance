@@ -58,7 +58,7 @@ $("#generate").on("click", function () {
       $(`.${generatedSelect2ClassName}`).select2({
         ajax: {
           transport: function (params, success) {
-            const term = (params.data?.term || "").toLowerCase();
+            const term = (params.data.term || "").toLowerCase();
             const filtered = term
               ? items.filter((i) => i.text.toLowerCase().includes(term))
               : items;
