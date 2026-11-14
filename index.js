@@ -62,8 +62,13 @@ $("#generate").on("click", function () {
             const filtered = term
               ? items.filter((i) => i.text.toLowerCase().includes(term))
               : items;
+            const page = params.data.page || 1;
+            const perPage = 100;
             success({
-              results: filtered,
+              results: filtered.slice((page - 1) * perPage, page * perPage),
+              pagination: {
+                more: page * perPage < filtered.length,
+              },
             });
             return {
               abort() {}, // 手元のデータを絞り込むだけなので空の関数
@@ -88,7 +93,7 @@ $("#generate").on("click", function () {
 const MODE_DESC_NORMAL =
   "通常：全選択肢をoptionで生成した後、ページ内のSelect2をまとめて初期化します。（遅い）";
 const MODE_DESC_OPTIMIZED =
-  "最適化：選択肢はJavaScript上で1つだけ保持し、ajax.transportで検索します。（速い）";
+  "最適化：選択肢はJavaScript上で1つだけ保持し、ajax.transportで検索します。ページネーションで選択肢を100件ごとに表示します。（速い）";
 
 const $modeDesc = $("#mode-desc");
 
